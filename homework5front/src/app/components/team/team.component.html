@@ -5,7 +5,10 @@
   </h1>
   <button (click)="getPokemons()">Add Pokemon</button>
   <button (click)="viewStats()">View Stats</button>
-  <div *ngIf="viewStats()">
-    <h1 >{{ pokemon.name }} - {{ pokemon.hp }} </h1>
+  <div>
+    <h1 >{{ pokemon.name }} - {{ pokemon.hp }} - {{ pokemon.attack }} - {{ pokemon.defense }} -
+      {{ pokemon.specialAttack }} - {{ pokemon.specialDefense }} - {{ pokemon.speed}}
+    </h1>
   </div>
 </div>
+

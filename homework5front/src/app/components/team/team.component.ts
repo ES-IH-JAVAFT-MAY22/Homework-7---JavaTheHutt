@@ -38,6 +38,18 @@ export class TeamComponent implements OnInit {
         console.log(data);
         const name: string = data.species.name;
         const photo: string = data.sprites.front_default;
+        this.pokemon.name = name;
+        this.pokemon.photo = photo;
+
+      }
+    );
+  }
+
+  viewStats(): void{
+    this.pokedexService.viewStats(this.pokemonName).subscribe(
+      data => {
+        console.log(data);
+        const name: string = data.species.name;
         const type: string = data.types[0].type.name;
         const hp: number = data.stats[0].base_stat;
         const attack: number = data.stats[1].base_stat;
@@ -45,8 +57,6 @@ export class TeamComponent implements OnInit {
         const specialAttack: number = data.stats[3].base_stat;
         const specialDefense: number = data.stats[4].base_stat;
         const speed: number = data.stats[5].base_stat;
-        this.pokemon.name = name;
-        this.pokemon.photo = photo;
         this.pokemon.type = type;
         this.pokemon.hp = hp;
         this.pokemon.attack = attack;
@@ -55,19 +65,8 @@ export class TeamComponent implements OnInit {
         this.pokemon.specialDefense = specialDefense;
         this.pokemon.speed = speed;
       }
-    );
-  }
-
-  viewStats(): boolean{
-
-    {{ this.pokemon.hp}}
-    {{ this.pokemon.attack}}
-    {{ this.pokemon.defense}}
-    {{ this.pokemon.specialAttack}}
-    {{ this.pokemon.specialDefense}}
-    {{ this.pokemon.speed}}
-    return true;
-  }
+      );
+    }
 
   goBack(): void {
     this.router.navigate(['/']);

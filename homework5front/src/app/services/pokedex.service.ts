@@ -20,6 +20,10 @@ export class PokedexService {
     return this.http.get(`${this.API_URL}/${pokemonName}`);
   }
 
+  viewStats(pokemonName:string): Observable<any> {
+    return this.http.get(`${this.API_URL}/${pokemonName}`);
+  }
+
   getAll(): Observable<any> {
     return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`);
   }
