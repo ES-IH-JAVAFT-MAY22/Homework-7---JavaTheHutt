@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PokedexService } from 'src/app/services/pokedex.service';
+import { Pokemon } from '../models/pokemon.model';
+
 
 @Component({
   selector: 'app-pokedex',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokedexComponent implements OnInit {
 
-  constructor() { }
+  pokemon: Pokemon;
 
-  ngOnInit(): void {
+  pokemons: Pokemon[];
+
+  constructor(
+
+    private activatedRoute: ActivatedRoute,
+    private pokedexService: PokedexService,
+    private router: Router
+
+  ) {
+    this.pokemons = [],
+    this.pokemon = new Pokemon('', '', '', 0, 0, 0, 0, 0, 0)
   }
 
+  ngOnInit(): void {
+
+
+  }
+
+  getAll() {
+    this.pokedexService.getAll().subscribe(
+      (pokemons) => {
+        this.pokemons = pokemons;
+      }
+    )
+  }
+
+  goBack(): void {
+    this.router.navigate(['/']);
+  }
 }
+
+
+
+
+

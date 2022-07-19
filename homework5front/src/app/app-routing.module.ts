@@ -10,11 +10,11 @@ const routes: Routes = [
      component: TeamComponent,
     },
     {
-     path: '/pokedex',
+     path: 'pokedex',
      component: PokedexComponent,
    },
     {
-     path: '/trainer',
+     path: 'trainer',
      component: TrainerComponent,
    }
 ];

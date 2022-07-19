@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     TeamComponent,
     TrainerComponent,
     PokedexComponent
+
   ],
   imports: [
     BrowserModule,
