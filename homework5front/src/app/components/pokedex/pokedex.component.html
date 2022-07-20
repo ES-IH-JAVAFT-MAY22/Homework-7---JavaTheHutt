@@ -1,6 +1,11 @@
 <div class="container">
-    <h1>Pokedex List</h1>
-    <div *ngFor="let pokemon of pokemons">
+    <h1>{{ pokemon.name }}
+      <img src="{{pokemon.photo}}" alt="">
+    </h1>
+    <button (click)="getAll()">Add Pokemon</button>
+    <div>
+      <h1 >{{ pokemon.name }} - {{ pokemon.hp }} - {{ pokemon.attack }} - {{ pokemon.defense }} -
+        {{ pokemon.specialAttack }} - {{ pokemon.specialDefense }} - {{ pokemon.speed}}
+      </h1>
     </div>
-    <button (click)="goBack()">Back</button>
-</div>
+  </div>

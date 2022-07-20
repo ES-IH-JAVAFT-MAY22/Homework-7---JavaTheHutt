@@ -1,1 +1,30 @@
-<p>trainer works!</p>
+ <div class="container">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div>
+            <input name="name" type="text" placeholder="Name..." [(ngModel)]="name" required #nameInput="ngModel">
+            <p *ngIf="nameInput.invalid && nameInput.touched" class="error-msg">Please introduce your name</p>
+        </div>
+        <div>
+            <input name="age" type="number" placeholder="Age..." [(ngModel)]="age" required #ageInput="ngModel">
+            <p *ngIf="ageInput.invalid && ageInput.dirty" class="error-msg">Please introduce your age</p>
+        </div>
+        <div>
+            <input name="hobby" type="text" placeholder="Hobby..." [(ngModel)]="hobby" required #hobbyInput="ngModel">
+            <p *ngIf="hobbyInput.invalid && hobbyInput.touched" class="error-msg">Please introduce your hobby</p>
+        </div>
+        <div>
+            <label>
+                If you don't have any photo link you can use that one: 
+                https://ssb.wiki.gallery/images/6/6c/Pok%C3%A9mon_Trainer_%28solo%29-Alt1_SSBU.png
+                https://ssb.wiki.gallery/images/1/16/SSBU_spirit_Pok%C3%A9mon_Trainer_%28Male%29.png
+            </label>
+            <input name="photo" type="text" placeholder="Photo..." [(ngModel)]="photo" required #photoInput="ngModel">
+            <p *ngIf="photoInput.invalid && photoInput.touched" class="error-msg">Please introduce a photo</p>
+        </div>
+        <button type="submit" [disabled]="form.invalid" >Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+    <div>
+        {{trainer.name}} - {{trainer.age}} - {{trainer.hobby}} - <img src="{{trainer.photo}}" alt="">
+    </div> 
+</div>

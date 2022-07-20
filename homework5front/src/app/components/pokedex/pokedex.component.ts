@@ -15,29 +15,43 @@ export class PokedexComponent implements OnInit {
 
   pokemons: Pokemon[];
 
+  i:number;
+
+  name: string;
+
+
   constructor(
 
     private activatedRoute: ActivatedRoute,
     private pokedexService: PokedexService,
     private router: Router
 
+
+
   ) {
     this.pokemons = [],
     this.pokemon = new Pokemon('', '', '', 0, 0, 0, 0, 0, 0)
+    this.i = 0;
+    this.name = '';
   }
 
   ngOnInit(): void {
-
-
-  }
-
-  getAll() {
     this.pokedexService.getAll().subscribe(
-      (pokemons) => {
-        this.pokemons = pokemons;
-      }
+      data => {
+        console.log(data);
+      // for(let i = 0; i<20; i++){
+      //  console.log(data.name);
+      //  const name: string = data.name;
+      //  this.pokemons[0].name = name;
+        
+       }
+       
+    //  }
     )
   }
+
+  getAll(): void {}
+
 
   goBack(): void {
     this.router.navigate(['/']);
