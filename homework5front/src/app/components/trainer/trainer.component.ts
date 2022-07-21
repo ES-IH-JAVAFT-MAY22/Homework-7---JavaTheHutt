@@ -25,10 +25,10 @@ export class TrainerComponent implements OnInit {
     private backendService: BackendService,
     private router: Router
   ) { 
-    this.name= "";
-    this.age= 0;
-    this.hobby= "";
-    this.photo= "";
+    this.name= "Maria";
+    this.age= 20;
+    this.hobby= "dance";
+    this.photo= "https://ssb.wiki.gallery/images/6/6c/Pok%C3%A9mon_Trainer_%28solo%29-Alt1_SSBU.png";
     this.trainer= new Trainer("",0,"","");
   }
 
@@ -40,22 +40,24 @@ export class TrainerComponent implements OnInit {
     this.trainer.photo=this.photo;
     console.log(this.trainer);
 
+    this.backendService.addTrainer(this.trainer).subscribe(
+      dataResult => {
+      }, 
+      error => {
+        console.log(error.status);
+        console.error("There was an error!", error);
+      }
+    );
+
       
   }
 
-  addPokemon(trainer: Trainer): Observable<any> {
+ 
 
-    const body = {
-      name: trainer.name,
-      age: trainer.age,
-      hobby: trainer.hobby,
-      photo: trainer.photo
-    }
-
-    return this.http.post<any>(`https://localhost:8080/trainers`, body);
-  }
 
   ngOnInit(): void {}
+
+  
 
   }
 

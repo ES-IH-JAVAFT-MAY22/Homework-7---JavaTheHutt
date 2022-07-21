@@ -8,11 +8,17 @@ import { Trainer } from '../components/models/trainer.model';
 })
 export class BackendService {
 
-  private readonly API_URL = 'https://localhost/8080'
+  private readonly API_URL = 'http://localhost:8080/trainers'
 
   constructor(
     private http: HttpClient
   ) { }
+
+  addTrainer(trainer: Trainer): Observable<Trainer> {
+
+    console.log(trainer);
+    return this.http.post<any>(this.API_URL, trainer);
+  }
 
  
   }

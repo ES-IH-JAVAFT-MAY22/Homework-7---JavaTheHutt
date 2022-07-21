@@ -11,11 +11,7 @@ import { Pokemon } from '../models/pokemon.model';
 })
 export class PokedexComponent implements OnInit {
 
-  pokemon: Pokemon;
-
   pokemons: Pokemon[];
-
-  i:number;
 
   name: string;
 
@@ -30,8 +26,6 @@ export class PokedexComponent implements OnInit {
 
   ) {
     this.pokemons = [],
-    this.pokemon = new Pokemon('', '', '', 0, 0, 0, 0, 0, 0)
-    this.i = 0;
     this.name = '';
   }
 
@@ -39,6 +33,10 @@ export class PokedexComponent implements OnInit {
     this.pokedexService.getAll().subscribe(
       data => {
         console.log(data);
+       // this.pokemons= data.results;
+        for(let i = 0; i<data.results.length; i++){
+          console.log(data.results[i].name); 
+        }
       // for(let i = 0; i<20; i++){
       //  console.log(data.name);
       //  const name: string = data.name;

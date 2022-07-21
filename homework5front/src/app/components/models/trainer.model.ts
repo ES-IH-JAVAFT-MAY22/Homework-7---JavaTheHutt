@@ -34,6 +34,15 @@ export class Trainer {
         this._name = value;
     }
 
+    public toJSON(): any {
+        return {
+            hobby: this.hobby,
+            name: this.name,
+            age: this.age,
+            photo: this.photo
+        };
+
+    }
 }
 
     

@@ -25,7 +25,7 @@ export class PokedexService {
   }
 
   //Obtiene pokemon
-  getAll(){
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=20`);
+  getAll(): Observable<any>{
+    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon?limit=20`);
   }
 }
