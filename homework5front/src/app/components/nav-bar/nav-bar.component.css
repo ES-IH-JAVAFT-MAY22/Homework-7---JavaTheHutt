@@ -1,8 +1,9 @@
 ul {
+  justify-content: center;
   display: flex;
   list-style: none;
   padding: 20px;
-  background-color: coral;
+  background-color: red;
 }
 
 li {

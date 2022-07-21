@@ -69,4 +69,19 @@ export class Pokemon {
     this._type = value;
   }
 
+  public toJSON(): any {
+    return {
+        type: this.type,
+        name: this.name,
+        hp: this.hp,
+        photo: this.photo,
+        attack: this.attack,
+        defense: this.defense,
+        specialAttack: this.specialAttack,
+        specialDefense: this.specialDefense,
+        speed: this.speed,
+    };
+
+}
+
 }

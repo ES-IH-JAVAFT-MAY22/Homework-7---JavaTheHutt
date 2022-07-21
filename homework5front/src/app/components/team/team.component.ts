@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BackendService } from 'src/app/services/backend.service';
 import { PokedexService } from 'src/app/services/pokedex.service';
 import { Pokemon } from '../models/pokemon.model';
 
@@ -20,7 +21,8 @@ export class TeamComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokedexService: PokedexService,
-    private router: Router
+    private router: Router,
+    private backendService: BackendService
   ) {
     this.pokemons= [];
     this.pokemon = new Pokemon ('','','', 0, 0, 0, 0, 0, 0);
@@ -32,7 +34,7 @@ export class TeamComponent implements OnInit {
   }
 
   getPokemons(){
-  //this.pokemonName = this.activatedRoute.snapshot.params['pokemonName'];
+
     this.pokedexService.getPokemons(this.pokemonName).subscribe(
       data => {
         console.log(data);
@@ -43,6 +45,16 @@ export class TeamComponent implements OnInit {
 
       }
     );
+
+    this.backendService.addTeam(this.pokemon).subscribe(
+      dataResult => {
+      }, 
+      error => {
+        console.log(error.status);
+        console.error("There was an error!", error);
+      }
+    );
+
   }
 
   viewStats(): void{
